@@ -35,16 +35,24 @@ public class HarryKartController {
         List<LoopModel> loopModelList=new ArrayList<>();
         List<ParticipantModel> participantModelList=new ArrayList<>();
         int numberofIterations=0;
+        String localDir ="";
+        String rootPath="";
+        String fileName="";
 
         DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
         try {
 
             DocumentBuilder builder=factory.newDocumentBuilder();
 
-            ClassLoader classLoader = getClass().getClassLoader();
+             ClassLoader classLoader = getClass().getClassLoader();
 
+             localDir = System.getProperty("user.dir");
+             rootPath="\\src\\main\\resources\\";
             //Here I have used one input file but we can replace it with other given input files and code will run fine for all given input files, I have tested this code with all given file
-            File file = new File(classLoader.getResource("input_0.xml").getFile());
+            fileName="input_0.xml";
+             localDir=localDir+rootPath+fileName;
+
+            File file = new File(localDir);
 
             Document document=builder.parse(file);
 
